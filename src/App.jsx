@@ -9,11 +9,18 @@ export default function App() {
     bad: 0
   });
 
+  const handleFeedback = (type) => {
+    setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [type]: prevFeedback[type] + 1
+    }));
+  };
+
   return (
     <div>
       <h1>Sip Happens Café</h1>
       <p>Please leave your feedback about our service by selecting one of the options below.</p>
-      <Options />
+      <Options onLeaveFeedback={handleFeedback} />
       <Feedback good={feedback.good} neutral={feedback.neutral} bad={feedback.bad} />
     </div>
   );
